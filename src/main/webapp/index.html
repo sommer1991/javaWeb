@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="app">
+<head>
+<meta charset="utf-8" />
+<title>Web Project</title>
+<link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css"
+	type="text/css" />
+
+<link rel="stylesheet" href="css/app.css" type="text/css" />
+</head>
+<body ng-app="app">
+	<div ng-view></div>
+ 	<div class="text-center" ng-include="'tpl/blocks/page_footer.html'"></div>
+	<!--Angular   -->
+	<script src="vendor/angular/angular.min.js"></script>
+	<script src="vendor/angular/angular-resource.min.js"></script>
+	<script src="vendor/angular/angular-route.min.js"></script>
+
+	<!-- jquery -->
+	<script src="vendor/jquery/jquery-1.11.1.js"></script>
+	<!-- bootstrap -->
+	<script src="vendor/bootstrap/js/bootstrap.js"></script>
+	<!-- App -->
+	<script src="js/app/app.js"></script>
+	<script src="js/controllers/userController.js"></script>
+	<script src="js/controllers/postController.js"></script>
+	<script src="js/controllers/commentController.js"></script>
+	<script src="js/controllers/signinController.js"></script>
+	<script src="js/controllers/signupController.js"></script>
+	<script>
+		
+	</script>
+</body>
+</html>

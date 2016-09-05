@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.weibo.dashboard.dao.CommentMapper">
+	<resultMap id="commentMap" type="com.weibo.dashboard.entity.Comment">
+		<id property="id" column="id" javaType="int" />
+		<result property="date" column="date" javaType="Date" />
+		<result property="content" column="content" javaType="String" />
+		<result property="authorId" column="author_id" javaType="String" />
+		<result property="postId" column="post_id" javaType="String" />
+	</resultMap>
+	
+	<insert id="insert" parameterType="com.weibo.dashboard.entity.Comment">
+		insert into comments
+		(date,author_id,post_id,content)values
+		(now(),#authorId,#postId,#content))
+	</insert>
+	<delete id="delete">
+		delete from comments where id=#{id}
+	</delete>
+	
+</mapper>
