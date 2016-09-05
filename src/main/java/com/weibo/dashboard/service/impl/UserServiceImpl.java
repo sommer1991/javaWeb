@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService{
 		return userMapper.userNameExits(name);
 	}
 
-	public int accountValid(User user) {
+	public User accountValid(User user) {
 		return userMapper.accountValid(user);
 	}
 

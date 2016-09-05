@@ -4,16 +4,16 @@
 <mapper namespace="com.weibo.dashboard.dao.CommentMapper">
 	<resultMap id="commentMap" type="com.weibo.dashboard.entity.Comment">
 		<id property="id" column="id" javaType="int" />
-		<result property="date" column="date" javaType="Date" />
-		<result property="content" column="content" javaType="String" />
-		<result property="authorId" column="author_id" javaType="String" />
+		<result property="cDate" column="c_date" javaType="Date" />
+		<result property="cContent" column="c_content" javaType="String" />
+		<result property="cAuthorName" column="c_author_name" javaType="String" />
 		<result property="postId" column="post_id" javaType="String" />
 	</resultMap>
 	
 	<insert id="insert" parameterType="com.weibo.dashboard.entity.Comment">
 		insert into comments
-		(date,author_id,post_id,content)values
-		(now(),#authorId,#postId,#content))
+		(date,author_name,post_id,content)values
+		(now(),#{authorName},#{postId},#{content})
 	</insert>
 	<delete id="delete">
 		delete from comments where id=#{id}

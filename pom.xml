@@ -1,7 +1,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sommer.sample</groupId>
+	<groupId>com.weibo</groupId>
 	<artifactId>webproject</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
@@ -88,6 +88,14 @@
 			<artifactId>javaee-api</artifactId>
 			<version>7.0</version>
 		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
+		</dependency>
+
 		<!-- dbcp用来在applicationContext.xml中配置数据库 -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
@@ -115,6 +123,12 @@
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-annotations</artifactId>
 			<version>2.5.4</version>
+		</dependency>
+		<!-- 用于将java对象封装成JSON格式或构造JSON数据 -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160212</version>
 		</dependency>
 	</dependencies>
 	<build>

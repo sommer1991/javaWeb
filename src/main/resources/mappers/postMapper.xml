@@ -5,26 +5,25 @@
 	<resultMap id="postMap" type="com.weibo.dashboard.entity.Post">
 		<id property="id" column="id" javaType="int"/>
 		<result property="date" column="date" javaType="Date"/>
-		<result property="authorId" column="author_id" javaType="int"/>
+		<result property="authorName" column="author_name" javaType="String"/>
 		<result property="content" column="content" javaType="String"/>
 		<result property="likes" column="likes" javaType="int"/>
 		<collection property="commentList" column="commentList" ofType="com.weibo.dashboard.entity.Comment">
-			<id property="id" column="id" javaType="int"/>
-			<result property="date" column="date" javaType="Date"/>
-			<result property="content" column="content" javaType="String"/>
-			<result property="authorId" column="author_id" javaType="String"/>
+			<result property="cDate" column="c_date" javaType="Date"/>
+			<result property="cContent" column="c_content" javaType="String"/>
+			<result property="cAuthorName" column="c_author_name" javaType="String"/>
 		</collection>
 	</resultMap>
 	<select id="findList" resultMap="postMap">
-		select * from posts,comments where post_id = posts.id
+		select * from posts left outer join comments on post_id = posts.id order by posts.date desc
 	</select>
 	<select id="postByUser" resultMap="postMap">
-		select * from posts,comments where post_id = posts.id and posts.author_id = #(userId)
+		select * from posts,comments where post_id = posts.id and posts.author_name = #{userName} order by posts.date desc
 	</select>
 	<insert id="insert" parameterType="com.weibo.dashboard.entity.Post">
 		insert into posts
-		(date,author_id,content)values
-		(now(),#authorId,#content))
+		(date,author_name,content)values
+		(now(),#{authorName},#{content})
 	</insert>
 	<delete id="delete">
 		delete from posts where id=#{id}

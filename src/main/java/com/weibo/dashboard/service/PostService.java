@@ -7,7 +7,7 @@ import com.weibo.dashboard.entity.Post;
 public interface PostService {
 	List<Post> findList();
 
-	List<Post> postByUser(int userId);
+	List<Post> postByUser(String userName);
 
 	int insert(Post post);
 

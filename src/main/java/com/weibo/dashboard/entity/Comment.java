@@ -4,9 +4,9 @@ import java.util.Date;
 
 public class Comment {
 	private int id;
-	private Date date;
-	private String content;
-	private int authorId;
+	private Date cDate;
+	private String cContent;
+	private String cAuthorName;
 	private int postId;
 	public int getId() {
 		return id;
@@ -14,23 +14,23 @@ public class Comment {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public Date getDate() {
-		return date;
+	public Date getcDate() {
+		return cDate;
 	}
-	public void setDate(Date date) {
-		this.date = date;
+	public void setcDate(Date cDate) {
+		this.cDate = cDate;
 	}
-	public String getContent() {
-		return content;
+	public String getcContent() {
+		return cContent;
 	}
-	public void setContent(String content) {
-		this.content = content;
+	public void setcContent(String cContent) {
+		this.cContent = cContent;
 	}
-	public int getAuthorId() {
-		return authorId;
+	public String getcAuthorName() {
+		return cAuthorName;
 	}
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
+	public void setcAuthorName(String cAuthorName) {
+		this.cAuthorName = cAuthorName;
 	}
 	public int getPostId() {
 		return postId;

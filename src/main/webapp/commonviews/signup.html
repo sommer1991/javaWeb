@@ -1,5 +1,5 @@
     <div class="container w-xxl w-auto-xs">
-      <a href class="navbar-brand block m-t">{{app.name}}</a>
+      <a href class="navbar-brand block m-t">Weibo</a>
       <div class="m-b-lg">
         <div class="wrapper text-center">
           <strong>Signup</strong>
@@ -11,7 +11,8 @@
           <div class="list-group list-group-sm">
 
             <div class="list-group-item">
-              <input placeholder="nick name" class="form-control no-border" ng-model="user.name" required>
+              <input id="username" placeholder="nick name" class="form-control no-border" ng-model="user.name" ng-blur="validateName()" required>
+              <div class="tip" style="top:13px;left:332px;" ng-show="!validUsername">Username exits!</div>
             </div>
             <div class="list-group-item">
                <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password" required>
@@ -22,10 +23,10 @@
               <input type="checkbox" ng-model="agree" required><i></i> Agree the <a href>terms and policy</a>
             </label>
           </div>
-          <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="signup()" ng-disabled='form.$invalid'>Sign up</button>
+          <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="signup()" ng-disabled='form.$invalid||!validUsername'>Sign up</button>
           <div class="line line-dashed"></div>
           <p class="text-center"><small>Already have an account?</small></p>
-          <a ui-sref="access.signin" class="btn btn-lg btn-default btn-block">Sign in</a>
+          <a href="#signin" class="btn btn-lg btn-default btn-block">Sign in</a>
         </form>
       </div>
     </div>

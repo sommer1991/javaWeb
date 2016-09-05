@@ -18,7 +18,17 @@ public class UserTest {
 	@Test
 	public void testFindList(){
 		User res= as.select("sommer");
-		System.out.println(res.getName());
+//		System.out.println(res.getName());
 		
 	}
+	/*@Test
+	public void testAdd(){
+		User user = new User();
+		user.setName("sommer");
+		user.setPassword("sommerpd");
+		
+		int res= as.insert(user);
+		System.out.println(res);
+		
+	}*/
 }

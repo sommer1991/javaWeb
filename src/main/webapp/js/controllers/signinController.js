@@ -1,20 +1,19 @@
-app.controller('SigninFormController', ['$scope', '$http', '$state', function($scope, $http, $state) {
+app.controller('signinCtrl', ['$scope', '$resource','$location','$cookieStore', function($scope, $resource, $location,$cookieStore) {
     $scope.user = {};
     $scope.authError = null;
     $scope.login = function() {
-      $scope.authError = null;
-      // Try to login
-      $http.post('api/login', {email: $scope.user.email, password: $scope.user.password})
-      .then(function(response) {
-          console.log("response.data.user...",response.data.user);
-        if ( !response.data.user ) {
-          $scope.authError = 'Email or Password not right';
-        }else{
-          $state.go('app.dashboard-v1');
-        }
-      }, function(x) {
-        $scope.authError = 'Server Error';
-      });
+    	var userResource = $resource('user/login', {}, {login:{method:'POST'}});
+    	userResource.login({},$scope.user, function (res) {
+    		$scope.user = res.data;
+    		if(res.data==1){
+    			$cookieStore.put("user", $scope.user);
+    			$location.path("/home");
+    		}else{
+    			$scope.authError = "Authentication faliure";
+    		}
+    	}, function (res) {
+        	$scope.authError = "Server error";
+        });
     };
   }])
 ;

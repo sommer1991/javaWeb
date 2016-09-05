@@ -2,31 +2,29 @@
 
 
 var app = angular.module('app', [
-
+'ngRoute',
+'ngResource',
+'ngCookies'
 ]);
 
-app.config(['routeProvider', function($routeProvider){
-	$routeProvider.when('signin',{
-		templateUrl:'dashboard/signin.html',
+app.config(['$routeProvider',function ($routeProvider) {
+	$routeProvider.when('/signin',{
+		templateUrl:'commonviews/signin.html',
 		controller:'signinCtrl'
 	})
-	$routeProvider.when('signup',{
-		templateUrl:'dashboard/signup.html',
+	.when('/signup',{
+		templateUrl:'commonviews/signup.html',
 		controller:'signupCtrl'
 	})
-	.when('author',{
-		templateUrl:'dashboard/author.html',
-		controller:'authorCtrl'
-	})
-	.when('blog',{
-		templateUrl:'dashboard/blog.html',
-		controller:'blogCtrl'
+	.when('/home',{
+		templateUrl:'dashboard/home.html',
+		controller:'homeCtrl'
 	})
 	.otherwise({redirectTo:'/home'
 	});
 	
 }]);
 
-app.run(['$rootScope',function($rootScope){
-	
+app.run(['$rootScope','$resource',function($rootScope,$resource){
+	console.log("success");
 }]);

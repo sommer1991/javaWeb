@@ -6,7 +6,7 @@ import java.util.List;
 public class Post {
 	private int id;
 	private Date date;
-	private int authorId;
+	private String authorName;
 	private String content;
 	private int likes;
 	private List<Comment> commentList;
@@ -22,11 +22,12 @@ public class Post {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public int getAuthorId() {
-		return authorId;
+	
+	public String getAuthorName() {
+		return authorName;
 	}
-	public void setAuthorId(int authorId) {
-		this.authorId = authorId;
+	public void setAuthorName(String authorName) {
+		this.authorName = authorName;
 	}
 	public String getContent() {
 		return content;

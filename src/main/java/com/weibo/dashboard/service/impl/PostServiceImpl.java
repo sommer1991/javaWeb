@@ -19,8 +19,8 @@ public class PostServiceImpl implements PostService{
 		return postMapper.findList();
 	}
 
-	public List<Post> postByUser(int userId) {
-		return postMapper.postByUser(userId);
+	public List<Post> postByUser(String userName) {
+		return postMapper.postByUser(userName);
 	}
 
 	public int insert(Post post) {

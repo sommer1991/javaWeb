@@ -2,6 +2,7 @@ package com.weibo.dashboard.controller;
 
 import javax.annotation.Resource;
 
+import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.weibo.dashboard.entity.User;
 import com.weibo.dashboard.service.UserService;
+import com.weibo.util.ResponseData;
 
 @RestController
 @RequestMapping(value="/user")
@@ -21,11 +23,10 @@ public class UserController {
 	
 	@ResponseBody
 	@RequestMapping(value="/{name}",method=RequestMethod.GET)
-	public User findUser(@PathVariable("name")String name){
+	public ResponseData findUser(@PathVariable("name")String name){
 		User user = userService.select(name);
-		return user;
+		return new ResponseData(user);
 	}
-	
 //	@ResponseBody
 //	@RequestMapping(value="/{name}",method=RequestMethod.GET)
 //	public int userNameExits(@PathVariable("name")String name){
@@ -34,17 +35,16 @@ public class UserController {
 //	}
 	
 	@ResponseBody
-	@RequestMapping(value="",method=RequestMethod.POST)
-	public int accountValid(@RequestBody User user){
-		int res = userService.accountValid(user);
-		return res;
+	@RequestMapping(value="/login",method=RequestMethod.POST)
+	public ResponseData accountValid(@RequestBody User user){
+		User res = userService.accountValid(user);
+		return new ResponseData(res);
 	}
-	
 	@ResponseBody
-	@RequestMapping(value="",method=RequestMethod.POST)
-	public int insert(@RequestBody User user){
-		int res = userService.insert(user);
-		return res;
+	@RequestMapping(value="/new",method=RequestMethod.POST)
+	public ResponseData insert(@RequestBody User user){
+		userService.insert(user);
+		return new ResponseData(user);
 	}
 	
 }
