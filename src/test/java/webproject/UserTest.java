@@ -14,21 +14,24 @@ import com.weibo.dashboard.service.UserService;
 @ContextConfiguration(locations={"classpath:conf/spring-mybatis.xml"})
 public class UserTest {
 	@Resource
-	UserService as;
+	UserService us;
+	
 	@Test
-	public void testFindList(){
-		User res= as.select("sommer");
-//		System.out.println(res.getName());
-		
-	}
-	/*@Test
 	public void testAdd(){
 		User user = new User();
-		user.setName("sommer");
-		user.setPassword("sommerpd");
-		
-		int res= as.insert(user);
+		user.setName("test");
+		user.setPassword("testpd");
+		int res= us.insert(user);
 		System.out.println(res);
-		
-	}*/
+	}
+	
+	@Test
+	public void testAccountValid(){
+		User user = new User();
+		user.setName("test");
+		user.setPassword("testpd");
+		boolean res = us.accountValid(user);
+		System.out.println(res);
+	}
+	
 }

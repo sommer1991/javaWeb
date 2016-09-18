@@ -1,65 +1,83 @@
-    <div class="container" style="margin-top:20px;">
-      <!-- .comment-list -->
-      <div class="m-b b-l m-l-md streamline" ng-repeat="item in postList">
-        <div>
-          <a class="pull-left m-l-n-md">
-            <div>{{item.authorName}}</div>
-          </a>
-          <div class="m-l-lg panel b-a">
-            <div class="panel-heading pos-rlt b-b b-light">
-              <span class="arrow left"></span>
-       			<span>{{item.content}}</span>
-              <label class="label bg-info m-l-xs" ng-if="false">Editor</label> 
-              <span class="text-muted m-l-sm pull-right">
-                <i class="fa fa-clock-o"></i>
-                {{item.date|date: 'shortTime'}}&nbsp;&nbsp;{{item.date|date:'mediumDate' }}
-              </span>
-            </div>
-            <div class="panel-body">
-              <div class="">
-              {{item.likes}}
-                <a href ui-toggle-class class="btn btn-default btn-xs active">
-                  <i class="fa fa-star-o text-muted text"></i>
-                  <i class="fa fa-star text-danger text-active"></i> 
-                 Like
-                </a>
-                <a href class="btn btn-default btn-xs">
-                  <i class="fa fa-mail-reply text-muted" ></i> Reply
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- .comment-reply -->
-        <div class="m-l-lg" ng-repeat="cItem in item.commentList">
-          <a class="pull-left m-l-n-sd">
-            <div>{{cItem.cAuthorName}}</div>
-          </a>          
-          <div class="m-l-xxl panel b-a">
-            <div class="panel-heading pos-rlt">
-              <span class="arrow left pull-up"></span>
-              {{cItem.cContent}}  
-              <span class="text-muted m-l-sm pull-right">
-                <i class="fa fa-clock-o"></i>
-                {{cItem.cDate | date: 'shortTime'}}&nbsp;&nbsp;{{cItem.cDate | date: 'mediumDate'}}
-              </span>
-                                       
-            </div>
-          </div>
-        </div>
-      
-    </div>
-    <div class="clearfix m-b-lg">
-        
-        <div class="m-l-xxl">
-          <form class="m-b-none">
-            <div class="input-group">
-              <input type="text" class="form-control input-lg" ng-model="post.content" placeholder="Input your post here">
-              <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="button" ng-click="addPost()">POST</button>
-              </span>
-            </div>
-          </form>
-        </div>
-      </div>
+
+<div class="container" style="margin-top: 20px;">
+	<!-- .comment-list -->
+	<div class="m-b b-l m-l-md streamline" ng-repeat="item in postList" on-finish-render="ngRepeatFinished">
+		<div class="post">
+			<a class="pull-left m-l-n-md">
+				<div>{{item.authorName}}</div>
+			</a>
+			<div class="m-l-lg panel b-a">
+				<div class="panel-heading pos-rlt b-b b-light">
+					<span class="arrow left"></span> <span>{{item.content}}</span> <label
+						class="label bg-info m-l-xs" ng-if="item.authorName==username">Delete</label> <span
+						class="text-muted m-l-sm pull-right"> <i
+						class="fa fa-clock-o"></i> {{item.date|date:
+						'shortTime'}}&nbsp;&nbsp;{{item.date|date:'mediumDate' }}
+					</span>
+				</div>
+				<div class="panel-body">
+					<div class="">
+						{{item.likes}} <a class="btn btn-default btn-xs" ng-click="likeOrNot(item.id,item.liked=!item.liked)"> <i
+							class="fa fa-star-o text-muted" ng-if="!item.liked"></i> <i
+							class="fa fa-star text-danger" ng-if="item.liked"></i> Like
+						</a> <a class="btn btn-default btn-xs" data-toggle="modal" data-target="#replyModal" ng-click="setReplyPostId(item.id)"> <i
+							class="fa fa-mail-reply text-muted" ></i>
+							Reply
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- .comment-reply -->
+		<div class="m-l-lg" ng-repeat="cItem in item.commentList">
+			<a class="pull-left m-l-n-sd">
+				<div>{{cItem.cAuthorName}}</div>
+			</a>
+			<div class="m-l-xxl panel b-a">
+				<div class="panel-heading pos-rlt">
+					<span class="arrow left pull-up"></span> {{cItem.cContent}} <span
+						class="text-muted m-l-sm pull-right"> <i
+						class="fa fa-clock-o"></i> {{cItem.cDate | date:
+						'shortTime'}}&nbsp;&nbsp;{{cItem.cDate | date: 'mediumDate'}}
+					</span>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<div class="clearfix m-b-lg">
+
+		<div class="m-l-xxl">
+			<form class="m-b-none">
+				<div class="input-group">
+					<input type="text" class="form-control input-lg"
+						ng-model="post.content" placeholder="Input your post here">
+					<span class="input-group-btn">
+						<button class="btn btn-info btn-lg" type="button"
+							ng-click="addPost()">POST</button>
+					</span>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="btn btn-xs" data-dismiss="modal" aria-hidden="true">
+					cancel
+				</button>
+				 <button type="button" class="btn btn-warning btn-xs" data-dismiss="modal" aria-hidden="true" style="float:right;" ng-click="addComment()">
+					send
+				</button>
+			</div>
+			<div class="modal-body">
+				<input type="text" class="form-control" ng-model="comment.cContent" placeholder="reply sth..."/>
+			</div>
+			
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
 </div>

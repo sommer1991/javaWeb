@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.weibo.dashboard.entity.Comment;
 import com.weibo.dashboard.service.CommentService;
+import com.weibo.util.ResponseData;
 
 @RestController
 @RequestMapping(value="/comment")
@@ -18,8 +19,9 @@ public class CommentController {
 	CommentService commentService;
 	
 	@RequestMapping(value="/new",method=RequestMethod.POST)
-	public void add(@RequestBody Comment comment){
+	public ResponseData add(@RequestBody Comment comment){
 		commentService.insert(comment);
+		return new ResponseData(comment);
 	}
 	@RequestMapping(value="/{id}",method=RequestMethod.DELETE)
 	public void delete(@PathVariable("id") int id){

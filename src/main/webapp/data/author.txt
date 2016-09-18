@@ -1,2 +1,0 @@
-{message:"success",
-data:[{id:1,name:"sommer"},{id:2,name:"winter"},{id:3,name:"spring"}]}

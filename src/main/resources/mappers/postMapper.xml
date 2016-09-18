@@ -20,7 +20,7 @@
 	<select id="postByUser" resultMap="postMap">
 		select * from posts,comments where post_id = posts.id and posts.author_name = #{userName} order by posts.date desc
 	</select>
-	<insert id="insert" parameterType="com.weibo.dashboard.entity.Post">
+	<insert id="insert" parameterType="com.weibo.dashboard.entity.Post" useGeneratedKeys="true" keyProperty="id">
 		insert into posts
 		(date,author_name,content)values
 		(now(),#{authorName},#{content})
@@ -29,9 +29,10 @@
 		delete from posts where id=#{id}
 	</delete>
 	<update id="like">
-		update posts set likes=likes+1 where id=#{id}
+		update posts set likes=IF(likes IS NULL, 1,likes+1)
+		where id=#{id}
 	</update>
-	<update id="disLike">
-		update posts set likes=likes-1 where id=#{id}
+	<update id="dislike">
+		update posts set likes=IF(likes >0, likes-1,0) where id=#{id}
 	</update>
 </mapper>

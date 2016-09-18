@@ -22,8 +22,8 @@ public class UserServiceImpl implements UserService{
 		return userMapper.userNameExits(name);
 	}
 
-	public User accountValid(User user) {
-		return userMapper.accountValid(user);
+	public boolean accountValid(User user) {
+		return userMapper.accountValid(user)>0;
 	}
 
 	public int insert(User user) {

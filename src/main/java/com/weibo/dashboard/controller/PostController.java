@@ -38,9 +38,11 @@ public class PostController {
 		int res = postService.delete(id);
 		return res;
 	}
+	@ResponseBody
 	@RequestMapping(value="/new",method=RequestMethod.POST)
-	public void add(@RequestBody Post post){
+	public ResponseData add(@RequestBody Post post){
 		postService.insert(post);
+		return new ResponseData(post);
 	}
 	@RequestMapping(value="/likes/{id}/{flag}",method=RequestMethod.GET)
 	public void likeOrDislike(@PathVariable("id") int id,@PathVariable("flag") boolean flag){

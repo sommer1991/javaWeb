@@ -1,26 +1,33 @@
-<div class="container w-xxl w-auto-xs" >
-  <a href class="navbar-brand block m-t">Weibo</a>
-  <div class="m-b-lg">
-    <div class="wrapper text-center">
-      <strong>Sign in</strong>
-    </div>
-    <form name="form" class="form-validation">
-      <div class="text-danger wrapper text-center" ng-show="authError">
-          {{authError}}
-      </div>
-      <div class="list-group list-group-sm">
-        <div class="list-group-item">
-          <input type="text" placeholder="nick name" class="form-control no-border" ng-model="user.name">
-        </div>
-        <div class="list-group-item">
-           <input type="password" placeholder="Password" class="form-control no-border" ng-model="user.password">
-        </div>
-      </div>
-      <button type="submit" class="btn btn-lg btn-primary btn-block" ng-click="login()" ng-disabled='form.$invalid'>Log in</button>
-      <div class="text-center m-t m-b"><a href="#forgotpwd">Forgot password?</a></div>
-      <div class="line line-dashed"></div>
-      <p class="text-center"><small>Do not have an account?</small></p>
-      <a href="#signup" class="btn btn-lg btn-default btn-block">Create an account</a>
-    </form>
-  </div>
+<div class="container w-xxl w-auto-xs">
+	<a href class="navbar-brand block m-t">Weibo</a>
+	<div class="m-b-lg">
+		<div class="wrapper text-center">
+			<strong>Sign in</strong>
+		</div>
+		<form name="form" class="form-validation">
+			<div class="text-danger wrapper text-center" ng-show="authError">
+				{{authError}}</div>
+			<div class="list-group list-group-sm">
+				<div class="list-group-item">
+					<input type="text" placeholder="nick name"
+						class="form-control no-border" ng-model="user.name">
+				</div>
+				<div class="list-group-item">
+					<input type="password" placeholder="Password"
+						class="form-control no-border" ng-model="user.password">
+				</div>
+			</div>
+			<button type="submit" class="btn btn-lg btn-primary btn-block"
+				ng-click="login()" ng-disabled='form.$invalid'>Log in</button>
+			<div class="text-center m-t m-b">
+				<a href="#forgotpwd">Forgot password?</a>
+			</div>
+			<div class="line line-dashed"></div>
+			<p class="text-center">
+				<small>Do not have an account?</small>
+			</p>
+			<a href="#signup" class="btn btn-lg btn-default btn-block">Create
+				an account</a>
+		</form>
+	</div>
 </div>

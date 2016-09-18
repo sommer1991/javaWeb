@@ -2,7 +2,6 @@ package com.weibo.dashboard.controller;
 
 import javax.annotation.Resource;
 
-import org.json.JSONObject;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +18,6 @@ import com.weibo.util.ResponseData;
 public class UserController {
 	@Resource 
 	UserService userService;
-
 	
 	@ResponseBody
 	@RequestMapping(value="/{name}",method=RequestMethod.GET)
@@ -27,17 +25,11 @@ public class UserController {
 		User user = userService.select(name);
 		return new ResponseData(user);
 	}
-//	@ResponseBody
-//	@RequestMapping(value="/{name}",method=RequestMethod.GET)
-//	public int userNameExits(@PathVariable("name")String name){
-//		int res = userService.userNameExits(name);
-//		return res;
-//	}
 	
 	@ResponseBody
 	@RequestMapping(value="/login",method=RequestMethod.POST)
 	public ResponseData accountValid(@RequestBody User user){
-		User res = userService.accountValid(user);
+		boolean res = userService.accountValid(user);
 		return new ResponseData(res);
 	}
 	@ResponseBody

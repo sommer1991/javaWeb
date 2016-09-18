@@ -12,13 +12,15 @@
             http://www.springframework.org/schema/context/spring-context-4.2.xsd">
 
 	<!-- 使Spring支持自动检测组件，如注解的Controller -->
-
+	<mvc:annotation-driven/>
 	<context:component-scan base-package="com.weibo.dashboard.controller" />
 	<bean id="mappingJacksonHttpMessageConverter"  
         class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">  
         <property name="supportedMediaTypes">  
             <list>  
-                <value>text/html;charset=UTF-8</value>  
+                <value>apolication/json;charset=UTF-8</value>
+                <value>text/html;charset=UTF-8</value>
+                <value>text/plain;charset=UTF-8</value>
             </list>  
         </property>  
     </bean>  

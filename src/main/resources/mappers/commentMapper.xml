@@ -10,10 +10,10 @@
 		<result property="postId" column="post_id" javaType="String" />
 	</resultMap>
 	
-	<insert id="insert" parameterType="com.weibo.dashboard.entity.Comment">
+	<insert id="insert" parameterType="com.weibo.dashboard.entity.Comment" useGeneratedKeys="true" keyProperty="id">
 		insert into comments
-		(date,author_name,post_id,content)values
-		(now(),#{authorName},#{postId},#{content})
+		(c_date,c_author_name,post_id,c_content)values
+		(now(),#{cAuthorName},#{postId},#{cContent})
 	</insert>
 	<delete id="delete">
 		delete from comments where id=#{id}

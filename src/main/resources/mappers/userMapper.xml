@@ -19,8 +19,8 @@
 	<select id="userNameExits" resultType="int">
 		select count(0) from users where name=#{name}
 	</select>
-	<select id="accountValid" parameterType="com.weibo.dashboard.entity.User" resultMap="userMap">
-		select * from users where name=#{name} and password=#{password}
+	<select id="accountValid" parameterType="com.weibo.dashboard.entity.User" resultType="int">
+		select count(0) from users where name=#{name} and password=#{password}
 	</select>
 	<insert id="insert" parameterType="com.weibo.dashboard.entity.User" useGeneratedKeys="true" keyProperty="id">
 		insert into users (name, password) values (#{name},#{password})

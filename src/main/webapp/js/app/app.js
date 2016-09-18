@@ -4,7 +4,6 @@
 var app = angular.module('app', [
 'ngRoute',
 'ngResource',
-'ngCookies'
 ]);
 
 app.config(['$routeProvider',function ($routeProvider) {
@@ -20,11 +19,11 @@ app.config(['$routeProvider',function ($routeProvider) {
 		templateUrl:'dashboard/home.html',
 		controller:'homeCtrl'
 	})
-	.otherwise({redirectTo:'/home'
+	.otherwise({redirectTo:'/signin'
 	});
 	
 }]);
 
 app.run(['$rootScope','$resource',function($rootScope,$resource){
-	console.log("success");
+	 $rootScope.user={};
 }]);

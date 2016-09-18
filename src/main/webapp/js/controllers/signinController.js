@@ -1,12 +1,11 @@
-app.controller('signinCtrl', ['$scope', '$resource','$location','$cookieStore', function($scope, $resource, $location,$cookieStore) {
-    $scope.user = {};
+app.controller('signinCtrl', ['$rootScope', '$scope', '$resource','$location', function($rootScope, $scope, $resource, $location) {
+    $scope.user = $rootScope.user;
     $scope.authError = null;
     $scope.login = function() {
     	var userResource = $resource('user/login', {}, {login:{method:'POST'}});
     	userResource.login({},$scope.user, function (res) {
-    		$scope.user = res.data;
-    		if(res.data==1){
-    			$cookieStore.put("user", $scope.user);
+    		if(res.data==true){
+    			setCookie("username", $scope.user.name,1);
     			$location.path("/home");
     		}else{
     			$scope.authError = "Authentication faliure";
@@ -15,5 +14,4 @@ app.controller('signinCtrl', ['$scope', '$resource','$location','$cookieStore', 
         	$scope.authError = "Server error";
         });
     };
-  }])
-;
+  }]);

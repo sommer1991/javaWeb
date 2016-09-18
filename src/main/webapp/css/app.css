@@ -5117,3 +5117,9 @@ a.text-#000000:hover {
     width: 120px;
     color: red;
 }
+.modal-header{
+	padding: 8px 15px;
+}
+.modal-content{
+	background-color: rgb(253, 237, 217);
+}
