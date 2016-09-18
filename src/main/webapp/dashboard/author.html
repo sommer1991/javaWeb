@@ -1,0 +1,18 @@
+<div>
+	<table class="table">
+		<caption>作者</caption>
+		<thead>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr class="active" ng-repeat="item in authorList">
+				<td>{{$index+1}}</td>
+				<td>{{item.name}}</td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div>

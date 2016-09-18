@@ -1,0 +1,77 @@
+/*
+** Styles used in the jQuery Essential Training course materials
+*/
+body {
+    font-family: "Open Sans", sans-serif;
+    font-size: 12pt;
+}
+
+#example {
+    border: 1px solid gray;
+    background-color: #b3c8d0;
+    font-size:14pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    min-height: 200px;
+}
+
+.box {
+    border: 1px solid gray;
+    background-color: #b3c8d0;
+    font-size:14pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    min-height: 200px;
+    width: 300px;
+}
+
+.box p {
+    margin: 0 1pt 0 2pt
+}
+
+.smallbox {
+    border: 1px solid gray;
+    background-color: #b3c8d0;
+    font-size:14pt;
+    padding-left: 10pt;
+    padding-right: 10pt;
+    margin-bottom: 10pt;
+    margin-right: 0;
+    margin-left: 0;
+    min-height: 150px;
+    width: 200px;
+}
+
+.inline {
+    display: inline-block;
+}
+
+code {
+    background-color: #e8e8e8;
+    border: 1px solid #a8a8a8;
+    border-radius: 3px;
+    padding: 0 2pt;
+    margin: 2pt;
+    font-family: "source-code-pro", Consolas, monospace;
+    font-size: .8em;
+}
+
+li {
+    line-height: 1.3em;
+}
+
+button {
+    font-size: 14pt;
+    margin: 8px;
+}
+
+#eventDetails {
+    border: 1px solid #aaa;
+    margin-top: 8pt;
+    padding: 2pt;
+}
+
+.lineitem {
+    width: 120px;
+    display: inline-block
+}
